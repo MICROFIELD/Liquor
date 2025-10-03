@@ -107,18 +107,30 @@
     </aside>
   </main>
 
-  <footer>Mini Market — Liquor Store — please obey local laws when selling alcohol.</footer>
+  <footer>Mini Market — Liquor Store • Demo site only — please obey local laws when selling alcohol.</footer>
 
   <script>
+    function formatKs(num){ return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",") + 'ks'; }
+
     const productsData = [
-      {id:1,name:'Classic Whisky 700ml',category:'Whisky',price:75000,img:'https://via.placeholder.com/320x200?text=Whisky'},
-      {id:2,name:'Premium Vodka 750ml',category:'Vodka',price:25500,img:'https://via.placeholder.com/320x200?text=Vodka'},
-      {id:3,name:'Red Wine 750ml',category:'Wine',price:18000,img:'https://via.placeholder.com/320x200?text=Red+Wine'},
-      {id:4,name:'White Wine 750ml',category:'Wine',price:17500,img:'https://via.placeholder.com/320x200?text=White+Wine'},
-      {id:5,name:'Craft Beer Pack (6)',category:'Beer',price:12000,img:'https://via.placeholder.com/320x200?text=Beer'},
-      {id:6,name:'Rum Gold 700ml',category:'Rum',price:22000,img:'https://via.placeholder.com/320x200?text=Rum'},
-      {id:7,name:'Gin Tonic Bundle',category:'Gin',price:20000,img:'https://via.placeholder.com/320x200?text=Gin'},
-      {id:8,name:'Champagne 750ml',category:'Sparkling',price:45000,img:'https://via.placeholder.com/320x200?text=Champagne'}
+      {id:1,name:'Monkey Shoulder 1L',category:'Whisky',price:160000,img:'https://via.placeholder.com/320x200?text=Monkey+Shoulder'},
+      {id:2,name:'Beehive V.S.O.P 1L',category:'Whisky',price:63000,img:'https://via.placeholder.com/320x200?text=Beehive+VSOP'},
+      {id:3,name:'Beehive XO 1L',category:'Whisky',price:75000,img:'https://via.placeholder.com/320x200?text=Beehive+XO'},
+      {id:4,name:'Gentleman Jack 1L',category:'Whisky',price:163000,img:'https://via.placeholder.com/320x200?text=Gentleman+Jack'},
+      {id:5,name:'Jack Daniels 0.7L',category:'Whisky',price:67000,img:'https://via.placeholder.com/320x200?text=Jack+Daniels+0.7L'},
+      {id:6,name:'Jack Daniels 1L',category:'Whisky',price:90000,img:'https://via.placeholder.com/320x200?text=Jack+Daniels+1L'},
+      {id:7,name:'Jagermeister 0.7L',category:'Liquor',price:58000,img:'https://via.placeholder.com/320x200?text=Jagermeister+0.7L'},
+      {id:8,name:'Jagermeister 1L',category:'Liquor',price:75000,img:'https://via.placeholder.com/320x200?text=Jagermeister+1L'},
+      {id:9,name:'Grants 1L',category:'Whisky',price:48000,img:'https://via.placeholder.com/320x200?text=Grants+1L'},
+      {id:10,name:'Old Par 1L',category:'Whisky',price:158000,img:'https://via.placeholder.com/320x200?text=Old+Par+1L'},
+      {id:11,name:'J & B 1L',category:'Whisky',price:73000,img:'https://via.placeholder.com/320x200?text=J+%26+B+1L'},
+      {id:12,name:'Passport Scotch 1L',category:'Whisky',price:63000,img:'https://via.placeholder.com/320x200?text=Passport+Scotch+1L'},
+      {id:13,name:'Black & White 1L',category:'Whisky',price:63000,img:'https://via.placeholder.com/320x200?text=Black+%26+White+1L'},
+      {id:14,name:'Label 5 1L',category:'Whisky',price:47000,img:'https://via.placeholder.com/320x200?text=Label+5+1L'},
+      {id:15,name:'The Famous Grous 1L',category:'Whisky',price:65000,img:'https://via.placeholder.com/320x200?text=Famous+Grous+1L'},
+      {id:16,name:'Vat 69 1L',category:'Whisky',price:53000,img:'https://via.placeholder.com/320x200?text=Vat+69+1L'},
+      {id:17,name:'James (Rich) 1L',category:'Whisky',price:95000,img:'https://via.placeholder.com/320x200?text=James+Rich+1L'},
+      {id:18,name:'Tendo 1L',category:'Whisky',price:53000,img:'https://via.placeholder.com/320x200?text=Tendo+1L'}
     ];
 
     const state = { products: productsData, filtered: [...productsData], cart: {} };
@@ -135,18 +147,8 @@
     function renderCategories(){
       const cats = Array.from(new Set(state.products.map(p=>p.category)));
       categoriesEl.innerHTML = '';
-      const all = document.createElement('div'); 
-      all.className='chip active'; 
-      all.textContent='All'; 
-      all.addEventListener('click',()=>{setActiveCategory('All')}); 
-      categoriesEl.appendChild(all);
-      cats.forEach(c=>{
-        const el = document.createElement('div'); 
-        el.className='chip'; 
-        el.textContent=c; 
-        el.addEventListener('click',()=>setActiveCategory(c)); 
-        categoriesEl.appendChild(el);
-      });
+      const all = document.createElement('div'); all.className='chip active'; all.textContent='All'; all.addEventListener('click',()=>{setActiveCategory('All')}); categoriesEl.appendChild(all);
+      cats.forEach(c=>{ const el = document.createElement('div'); el.className='chip'; el.textContent=c; el.addEventListener('click',()=>setActiveCategory(c)); categoriesEl.appendChild(el); });
     }
 
     function setActiveCategory(cat){
@@ -181,9 +183,9 @@
         card.innerHTML = `
           <div class="media"><img src="${p.img}" alt="${p.name}"></div>
           <div class="title">${p.name}</div>
-          <div class="meta">${p.category} • 700-750ml</div>
+          <div class="meta">${p.category}</div>
           <div style="display:flex;justify-content:space-between;align-items:center">
-            <div class="price">${p.price}ks</div>
+            <div class="price">${formatKs(p.price)}</div>
             <div class="actions">
               <button class="ghost" data-id="${p.id}">Details</button>
               <button class="add" data-id="${p.id}">Add</button>
@@ -199,7 +201,7 @@
     function showDetails(id){
       const p = state.products.find(x=>x.id===id);
       if(!p) return;
-      alert(p.name + '\nCategory: ' + p.category + '\nPrice: ' + p.price + 'ks\n\nThis is a demo product.');
+      alert(`${p.name}\nCategory: ${p.category}\nPrice: ${formatKs(p.price)}\n\nThis is a demo product.`);
     }
 
     function addToCart(id){
@@ -219,8 +221,7 @@
 
     function syncCartUI(){
       const items = Object.values(state.cart);
-      cartItemsEl.innerHTML = '';
-      if(items.length === 0){ cartItemsEl.innerHTML = '<div class="empty">Your cart is empty</div>' }
+      cartItemsEl.innerHTML = items.length ? '' : '<div class="empty">Your cart is empty</div>';
       items.forEach(it=>{
         const row = document.createElement('div'); row.className='cart-row';
         row.innerHTML = `
@@ -229,7 +230,7 @@
             <div style="font-size:13px;color:var(--muted)">${it.category}</div>
           </div>
           <div style="text-align:right">
-            <div style="font-weight:700">${it.price*it.qty}ks</div>
+            <div style="font-weight:700">${formatKs(it.price*it.qty)}</div>
             <div class="qty" style="margin-top:6px">
               <button data-id="${it.id}" class="decrease">-</button>
               <div style="min-width:24px;text-align:center">${it.qty}</div>
@@ -239,29 +240,29 @@
         `;
         cartItemsEl.appendChild(row);
       });
+
       Array.from(document.querySelectorAll('.increase')).forEach(b=>b.onclick = ()=>changeQty(b.dataset.id*1, +1));
       Array.from(document.querySelectorAll('.decrease')).forEach(b=>b.onclick = ()=>changeQty(b.dataset.id*1, -1));
 
       cartCountEl.textContent = items.reduce((s,i)=>s+i.qty,0);
       openCartBtn.textContent = `Cart (${cartCountEl.textContent})`;
-      cartTotalEl.textContent = items.reduce((s,i)=>s + i.qty*i.price,0) + 'ks';
+      cartTotalEl.textContent = formatKs(items.reduce((s,i)=>s + i.qty*i.price,0));
     }
 
     document.getElementById('apply-filters').addEventListener('click', applyFilters);
     document.getElementById('clear-filters').addEventListener('click', ()=>{document.getElementById('min-price').value='';document.getElementById('max-price').value='';searchEl.value='';setActiveCategory('All')});
-    searchEl.addEventListener('input', ()=>applyFilters());
+    searchEl.addEventListener('input', applyFilters);
+
     document.getElementById('checkout-btn').addEventListener('click', ()=>{
       const items = Object.values(state.cart);
       if(items.length===0){ alert('Cart is empty'); return; }
-      const total = items.reduce((s,i)=>s + i.qty*i.price,0);
-      if(confirm(`Proceed to checkout?\nTotal: ${total}ks\n\nNote: This is a demo checkout. Implement payment & legal age verification in production.`)){
-        state.cart = {}; syncCartUI(); alert('Thank you! Your order has been placed (demo).');
+      const total = formatKs(items.reduce((s,i)=>s + i.qty*i.price,0));
+      if(confirm(`Proceed to checkout?\nTotal: ${total}\n\nNote: Demo checkout.`)){
+        state.cart={}; syncCartUI(); alert('Thank you! Order placed (demo).');
       }
     });
-    openCartBtn.addEventListener('click', ()=>{
-      const cart = document.querySelector('.cart');
-      cart.scrollIntoView({behavior:'smooth', block:'center'});
-    });
+
+    openCartBtn.addEventListener('click', ()=>{ document.querySelector('.cart').scrollIntoView({behavior:'smooth', block:'center'}); });
 
     renderCategories();
     renderProducts();
@@ -269,3 +270,4 @@
   </script>
 </body>
 </html>
+
