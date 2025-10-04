@@ -112,27 +112,27 @@
   <script>
     function formatKs(num){ return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",") + 'ks'; }
 
-   const productsData = [
-  {id:1,name:'Monkey Shoulder 1L',category:'Whisky',price:160000,img:'monkey_shoulder.jpg'},
-  {id:2,name:'Beehive V.S.O.P 1L',category:'Whisky',price:63000,img:'beehive_vsop.jpg'},
-  {id:3,name:'Beehive XO 1L',category:'Whisky',price:75000,img:'beehive_xo.jpg'},
-  {id:4,name:'Gentleman Jack 1L',category:'Whisky',price:163000,img:'/gentleman_jack.jpg'},
-  {id:5,name:'Jack Daniels 0.7L',category:'Whisky',price:67000,img:'/jack_daniels_07.jpg'},
-  {id:6,name:'Jack Daniels 1L',category:'Whisky',price:90000,img:'/jack_daniels_1l.jpg'},
-  {id:7,name:'Jagermeister 0.7L',category:'Liquor',price:58000,img:'/jagermeister_07.jpg'},
-  {id:8,name:'Jagermeister 1L',category:'Liquor',price:75000,img:'/jagermeister_1l.jpg'},
-  {id:9,name:'Grants 1L',category:'Whisky',price:48000,img:'/grants_1l.jpg'},
-  {id:10,name:'Old Par 1L',category:'Whisky',price:158000,img:'/old_par_1l.jpg'},
-  {id:11,name:'J & B 1L',category:'Whisky',price:73000,img:'/j_and_b_1l.jpg'},
-  {id:12,name:'Passport Scotch 1L',category:'Whisky',price:63000,img:/passport_scotch_1l.jpg'},
-  {id:13,name:'Black & White 1L',category:'Whisky',price:63000,img:'/black_white_1l.jpg'},
-  {id:14,name:'Label 5 1L',category:'Whisky',price:47000,img:'/label_5_1l.jpg'},
-  {id:15,name:'The Famous Grous 1L',category:'Whisky',price:65000,img:'/famous_grous_1l.jpg'},
-  {id:16,name:'Vat 69 1L',category:'Whisky',price:53000,img:'/vat_69_1l.jpg'},
-  {id:17,name:'James (Rich) 1L',category:'Whisky',price:95000,img:'/james_rich_1l.jpg'},
-  {id:18,name:'Tendo 1L',category:'Whisky',price:53000,img:'/tendo_1l.jpg'}
+    const productsData = [
+  {id:1,name:'Monkey Shoulder 1L',category:'Whisky',price:160000,img:'assets/monkey_shoulder.jpg'},
+  {id:2,name:'Beehive V.S.O.P 1L',category:'Whisky',price:63000,img:'assets/beehive_vsop.jpg'},
+  {id:3,name:'Beehive XO 1L',category:'Whisky',price:75000,img:'assets/beehive_xo.jpg'},
+  {id:4,name:'Gentleman Jack 1L',category:'Whisky',price:163000,img:'assets/gentleman_jack.jpg'},
+  {id:5,name:'Jack Daniels 0.7L',category:'Whisky',price:67000,img:'assets/jack_daniels_07.jpg'},
+  {id:6,name:'Jack Daniels 1L',category:'Whisky',price:90000,img:'assets/jack_daniels_1l.jpg'},
+  {id:7,name:'Jagermeister 0.7L',category:'Liquor',price:58000,img:'assets/jagermeister_07.jpg'},
+  {id:8,name:'Jagermeister 1L',category:'Liquor',price:75000,img:'assets/jagermeister_1l.jpg'},
+  {id:9,name:'Grants 1L',category:'Whisky',price:48000,img:'assets/grants_1l.jpg'},
+  {id:10,name:'Old Par 1L',category:'Whisky',price:158000,img:'assets/old_par_1l.jpg'},
+  {id:11,name:'J & B 1L',category:'Whisky',price:73000,img:'assets/j_and_b_1l.jpg'},
+  {id:12,name:'Passport Scotch 1L',category:'Whisky',price:63000,img:'assets/passport_scotch_1l.jpg'},
+  {id:13,name:'Black & White 1L',category:'Whisky',price:63000,img:'assets/black_white_1l.jpg'},
+  {id:14,name:'Label 5 1L',category:'Whisky',price:47000,img:'assets/label_5_1l.jpg'},
+  {id:15,name:'The Famous Grous 1L',category:'Whisky',price:65000,img:'assets/famous_grous_1l.jpg'},
+  {id:16,name:'Vat 69 1L',category:'Whisky',price:53000,img:'assets/vat_69_1l.jpg'},
+  {id:17,name:'James (Rich) 1L',category:'Whisky',price:95000,img:'assets/james_rich_1l.jpg'},
+  {id:18,name:'Tendo 1L',category:'Whisky',price:53000,img:'assets/tendo_1l.jpg'}
+];
 
-    ];
 
     const state = { products: productsData, filtered: [...productsData], cart: {} };
 
@@ -271,7 +271,3 @@
   </script>
 </body>
 </html>
-
-
-
-
